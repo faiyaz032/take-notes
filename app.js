@@ -1,7 +1,8 @@
 //dependencies
 const express = require('express');
+const path = require('path');
 //internal imports
-const notesRouter = require('./routers/notes');
+const notesRouter = require('./routes/notes');
 
 //initialise the app
 const app = express();
@@ -10,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 //serve static files
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //register note routes
 app.use('/api/notes', notesRouter);
